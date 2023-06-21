@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'inter',sans-serif;
+}
+.App{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-box{
+  /* border: 2px solid red; */
+  position: relative;
+  width: 398px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  backdrop-filter:blur(3px);
+}
+h2{
+  position: relative;
+  top: 0px;
+  font-size: 3rem;
+  text-align: center;
+  color: white;
+  letter-spacing: 2px;
+}
+.input{
+  /* border: 2px solid white; */
+  color: white;
+  position: relative;
+   margin: 30px 0;
+   width: 340px;
+   border-bottom: 2px solid white;
+
+}
+.input label{
+  font-size: 20px;
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  transition:0.5s;
+  pointer-events: none;
+}
+input:focus ~ label,
+input:valid ~ label{
+  top: -10px;
+  /* transform: translateY(-1200%); */
+}
+.input input{
+  /* border: 2px solid green; */
+  color:white;
+  width: 100%;
+  height: 50px;
+  background-color: transparent;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  padding: 0px 30px 0px 5px;
+}
+.input .icon{
+  /* color:red; */
+  position: absolute;
+  right:5px;
+  top: 15px;
+}
+.remember{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:white;
+  font-size: 18px;
+  margin: -15px 0 15px;
+}
+.remember input{
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+button{
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  background-color: white;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight:bolder;
+}
+.login{
+  text-align:center;
+  margin-top: 20px;
+  color: white;
+}
+.login a{
+  text-decoration: none;
+  color: white;
+
+}
+a:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+/* //background animation */
+.wrapper {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(180deg, #04fafd, 5%, #119dff, 50%, #030423);
+  position: absolute;
+}
+.wrapper h1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: 888;
+  text-transform: uppercase;
+}
+.wrapper div {
+  height: 60px;
+  width: 60px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  animation: 10s linear infinite;
+}
+div .dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 20%;
+  right: 20%;
+}
+.wrapper div:nth-child(1) {
+  top: 20%;
+  left: 20%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(2) {
+  top: 60%;
+  left: 80%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(3) {
+  top: 40%;
+  left: 40%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(4) {
+  top: 66%;
+  left: 30%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(5) {
+  top: 90%;
+  left: 10%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(6) {
+  top: 30%;
+  left: 60%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(7) {
+  top: 70%;
+  left: 20%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(8) {
+  top: 75%;
+  left: 60%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(9) {
+  top: 50%;
+  left: 50%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(10) {
+  top: 45%;
+  left: 20%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(11) {
+  top: 10%;
+  left: 90%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(12) {
+  top: 20%;
+  left: 70%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(13) {
+  top: 20%;
+  left: 20%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(14) {
+  top: 60%;
+  left: 5%;
+  animation: animate 10s linear infinite;
+}
+.wrapper div:nth-child(15) {
+  top: 90%;
+  left: 80%;
+  animation: animate 10s linear infinite;
+}
+@keyframes animate {
+  0% {
+    transform: scale(0.5) translateY(0) rotate(70deg);
+  }
+  50% {
+    transform: scale(1) translateY(-100px) rotate(360deg);
+  }
+  100% {
+    transform: scale(0.5) translateY(0) rotate(70deg);
+  }
+}
