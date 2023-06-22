@@ -5,16 +5,14 @@ const { body, validationResult } = require('express-validator');
 const router = express.Router();
 const jwt=require('jsonwebtoken');
 const fetchuser = require('../middlewares/fetchuser');
+const multer=require('multer');
+const upload = multer({ dest: 'uploads/' })
 
 //authToken secret
 const secret="groupProject";
 
 //Route - 1  Sign Up
-router.post('/signup',[
-    body('name', "enter a valid name").isLength({ min: 1 }),
-    body('email', "enter a valid email").isEmail(),
-    body('password').isLength({ min: 3 }),
-],async(req,res)=>{
+router.post('/signup',upload.single('imageUrl'),async(req,res)=>{
 
     //Checking if user already exists
     let findUser=await User.findOne({email:req.body.email});
@@ -34,12 +32,27 @@ router.post('/signup',[
         //securing the password using bycrypt
         let salt=bycrypt.genSaltSync(10);
         let securePassword=bycrypt.hashSync(req.body.password,salt);
+
+        //image handling
+        console.log(req.body);
+        console.log(req.file);
+        const storage = multer.diskStorage({
+            destination: function (req, file, cb) {
+              return cb(null, './uploads')
+            },
+            filename: function (req, file, cb) {
+              return cb(null, `${Date.now()}-${file.originalname}}`)
+            }
+          })
+          
+          const upload = multer({ storage });
     
         //creating new User
         let newUser=await User.create({
             name:req.body.name,
             email:req.body.email,
-            password:securePassword
+            password:securePassword,
+            imageUrl:""
         })
 
         //sending a token to get saved in localSystem
@@ -48,7 +61,7 @@ router.post('/signup',[
                 id:newUser.id
             }
         }
-        const authToken=jwt.sign(data,secret);
+        const authToken=jwt.sign(tokenData,secret);
         success=true;
         res.status(201).json({success:success,authToken:authToken});
     }
@@ -83,7 +96,7 @@ router.post('/login', [
             }
             const authToken=jwt.sign(data,secret);
             success=true;
-            res.stauts(200).json({success:success,authToken:authToken});
+            res.status(200).json({success:success,authToken:authToken});
         }
         else {
             success=false

@@ -24,6 +24,7 @@ function Login() {
     const json=await response.json();
     if(json.success){
       localStorage.setItem("token",json.data);
+      console.log("logined");
       navigate('/');
     }
     else{

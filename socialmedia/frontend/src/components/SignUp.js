@@ -3,8 +3,12 @@ import {
     Link, useNavigate
 } from "react-router-dom";
 import '../css/signup.css';
+//icons
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import KeyIcon from '@mui/icons-material/Key';
+import PersonIcon from '@mui/icons-material/Person';
+import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
+
 function SignUp() {
     const navigate = useNavigate();
     const host = "http://localhost:8000";
@@ -13,13 +17,14 @@ function SignUp() {
         e.preventDefault();
         const response = await fetch(`${host}/api/user/signup`, {
             method: 'POST',
+            encType:'multipart/form-data',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password })
+            body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password})
         });
         const json = await response.json();
-        if (json.successs) {
+        if (json.success) {
             localStorage.setItem('token', json.authToken);
             navigate('/');
         }
@@ -48,10 +53,10 @@ function SignUp() {
             </div>
             <div className="form-box">
                 <div className="form">
-                    <form onSubmit={handleSignup}>
+                    <form onSubmit={handleSignup} >
                         <h2>SignUp</h2>
                         <div className="input">
-                            <span className="icon"><MailOutlineIcon fontSize='large' /></span>
+                            <span className="icon"><PersonIcon fontSize='large' /></span>
                             <input type="text" id='text' name='name' onChange={handleChange} required />
                             <label htmlFor='name'>Name</label>
                         </div>
@@ -65,8 +70,9 @@ function SignUp() {
                             <input type="password" id='password' name='password' onChange={handleChange} required />
                             <label htmlFor='password'>Password</label>
                         </div>
-                        <div className="remember">
-                            <label htmlFor="check"><input type="checkbox" id='check' />Remember Me</label>
+                        <div className="input">
+                            <span className="icon"><InsertPhotoOutlinedIcon fontSize='large' /></span>
+                            <input type="file" id='image' alt='image' name='imageUrl' required />
                         </div>
                         <button>Sign Up</button>
                         <div className="login">
