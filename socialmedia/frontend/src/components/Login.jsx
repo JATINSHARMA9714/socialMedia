@@ -5,8 +5,8 @@ import {
 } from "react-router-dom";
 
 import '../css/login.css';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import KeyIcon from '@mui/icons-material/Key';
+import MailOutlineIcon from '@mui/icons-material/MailOutline.js';
+import KeyIcon from '@mui/icons-material/Key.js';
 function Login() {
   const navigate=useNavigate();
   const host="http://localhost:8000"

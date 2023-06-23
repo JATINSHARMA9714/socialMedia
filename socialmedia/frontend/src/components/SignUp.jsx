@@ -4,10 +4,9 @@ import {
 } from "react-router-dom";
 import '../css/signup.css';
 //icons
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
-import KeyIcon from '@mui/icons-material/Key';
-import PersonIcon from '@mui/icons-material/Person';
-import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
+import MailOutlineIcon from '@mui/icons-material/MailOutline.js';
+import KeyIcon from '@mui/icons-material/Key.js';
+import PersonIcon from '@mui/icons-material/Person.js';
 
 function SignUp() {
     const navigate = useNavigate();
@@ -17,7 +16,6 @@ function SignUp() {
         e.preventDefault();
         const response = await fetch(`${host}/api/user/signup`, {
             method: 'POST',
-            encType:'multipart/form-data',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -69,10 +67,6 @@ function SignUp() {
                             <span className="icon"><KeyIcon fontSize='large' /></span>
                             <input type="password" id='password' name='password' onChange={handleChange} required />
                             <label htmlFor='password'>Password</label>
-                        </div>
-                        <div className="input">
-                            <span className="icon"><InsertPhotoOutlinedIcon fontSize='large' /></span>
-                            <input type="file" id='image' alt='image' name='imageUrl' required />
                         </div>
                         <button>Sign Up</button>
                         <div className="login">

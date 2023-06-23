@@ -12,7 +12,7 @@ const upload = multer({ dest: 'uploads/' })
 const secret="groupProject";
 
 //Route - 1  Sign Up
-router.post('/signup',upload.single('imageUrl'),async(req,res)=>{
+router.post('/signup',async(req,res)=>{
 
     //Checking if user already exists
     let findUser=await User.findOne({email:req.body.email});
@@ -32,27 +32,12 @@ router.post('/signup',upload.single('imageUrl'),async(req,res)=>{
         //securing the password using bycrypt
         let salt=bycrypt.genSaltSync(10);
         let securePassword=bycrypt.hashSync(req.body.password,salt);
-
-        //image handling
-        console.log(req.body);
-        console.log(req.file);
-        const storage = multer.diskStorage({
-            destination: function (req, file, cb) {
-              return cb(null, './uploads')
-            },
-            filename: function (req, file, cb) {
-              return cb(null, `${Date.now()}-${file.originalname}}`)
-            }
-          })
-          
-          const upload = multer({ storage });
     
         //creating new User
         let newUser=await User.create({
             name:req.body.name,
             email:req.body.email,
-            password:securePassword,
-            imageUrl:""
+            password:securePassword
         })
 
         //sending a token to get saved in localSystem
